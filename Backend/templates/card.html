@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求职者信息卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+
+        .job-seeker-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .job-seeker-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .job-seeker-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-seeker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .job-seeker-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .job-seeker-name {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .job-seeker-title {
+            font-size: 1.0rem;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .job-seeker-contact {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .job-seeker-contact i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+
+        .job-seeker-section {
+            margin-bottom: 15px;
+        }
+
+        .job-seeker-section h3 {
+            font-size: 1.0rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .job-seeker-section h3 i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .job-seeker-section p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .job-seeker-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-seeker-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            font-weight: 500;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-seeker-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 图标样式 */
+        .icon-email::before {
+            content: "✉️";
+        }
+
+        .icon-phone::before {
+            content: "📞";
+        }
+
+        .icon-location::before {
+            content: "📍";
+        }
+
+        .icon-briefcase::before {
+            content: "💼";
+        }
+
+        .icon-graduation-cap::before {
+            content: "🎓";
+        }
+
+        .icon-building::before {
+            content: "🏢";
+        }
+
+        .icon-code::before {
+            content: "💻";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>优秀求职者推荐</h1>
+
+        <div class="job-seeker-cards">
+            <!-- 求职者卡片 1 -->
+            <div class="job-seeker-card">
+                <div class="job-seeker-header">
+                    <h2 class="job-seeker-name">张三</h2>
+                    <span class="job-seeker-title">高级前端开发工程师</span>
+                    <p class="job-seeker-contact">
+                        <i class="icon-email"></i> zhangsan@example.com |
+                        <i class="icon-phone"></i> 138-1234-5678 |
+                        <i class="icon-location"></i> 北京
+                    </p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-briefcase"></i> 求职意向</h3>
+                    <p>前端开发工程师 | 3-5年经验 | 本科及以上学历</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-graduation-cap"></i> 教育背景</h3>
+                    <p>北京大学 | 计算机科学与技术 | 2015-2019</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-building"></i> 工作经历</h3>
+                    <p>科技有限公司 | 前端开发工程师 | 2019-至今</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-code"></i> 技能</h3>
+                    <div class="job-seeker-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Vue</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">TypeScript</span>
+                    </div>
+                </div>
+
+                <button class="job-seeker-btn">联系求职者</button>
+            </div>
+
+            <!-- 求职者卡片 2 -->
+            <div class="job-seeker-card">
+                <div class="job-seeker-header">
+                    <h2 class="job-seeker-name">李四</h2>
+                    <span class="job-seeker-title">Python后端开发工程师</span>
+                    <p class="job-seeker-contact">
+                        <i class="icon-email"></i> lisi@example.com |
+                        <i class="icon-phone"></i> 139-9876-5432 |
+                        <i class="icon-location"></i> 上海
+                    </p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-briefcase"></i> 求职意向</h3>
+                    <p>后端开发工程师 | 2-4年经验 | 本科及以上学历</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-graduation-cap"></i> 教育背景</h3>
+                    <p>复旦大学 | 软件工程 | 2016-2020</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-building"></i> 工作经历</h3>
+                    <p>互联网科技公司 | 后端开发工程师 | 2020-至今</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-code"></i> 技能</h3>
+                    <div class="job-seeker-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </div>
+
+                <button class="job-seeker-btn">联系求职者</button>
+            </div>
+
+            <!-- 求职者卡片 3 -->
+            <div class="job-seeker-card">
+                <div class="job-seeker-header">
+                    <h2 class="job-seeker-name">王五</h2>
+                    <span class="job-seeker-title">数据分析师</span>
+                    <p class="job-seeker-contact">
+                        <i class="icon-email"></i> wangwu@example.com |
+                        <i class="icon-phone"></i> 137-6543-2109 |
+                        <i class="icon-location"></i> 深圳
+                    </p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-briefcase"></i> 求职意向</h3>
+                    <p>数据分析师 | 1-3年经验 | 本科及以上学历</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-graduation-cap"></i> 教育背景</h3>
+                    <p>中山大学 | 数据科学与大数据技术 | 2017-2021</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-building"></i> 工作经历</h3>
+                    <p>大数据科技公司 | 数据分析师 | 2021-至今</p>
+                </div>
+
+                <div class="job-seeker-section">
+                    <h3><i class="icon-code"></i> 技能</h3>
+                    <div class="job-seeker-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Tableau</span>
+                    </div>
+                </div>
+
+                <button class="job-seeker-btn">联系求职者</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
