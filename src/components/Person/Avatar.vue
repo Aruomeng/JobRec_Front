@@ -60,7 +60,7 @@ const avatar = ref(localStorage.getItem('avatar') || 'https://cube.elemecdn.com/
 const dialogVisible = ref(false);
 const previewImage = ref<string | null>(null); // 临时预览图
 const selectedFile = ref<File | null>(null); // 选中的文件
-const uploadUrl = 'http://localhost:8090/file/uploadAvatar';
+const uploadUrl = 'http://zhitutuijian.xyz/file/uploadAvatar';
 
 // 选择文件时的处理（仅暂存文件，不立即上传）
 const handleFileChange = (file: any) => {
@@ -92,11 +92,11 @@ const handleApply = async () => {
       throw new Error('文件上传失败');
     }
 
-    const avatarUrl = `http://localhost:8090/avatar/${uploadResponse.data}`;
+    const avatarUrl = `http://zhitutuijian.xyz/avatar/${uploadResponse.data}`;
 
     // 2. 调用头像更新接口
     const updateResponse = await service.post(
-        "http://localhost:8090/user/updateAvatar",
+        "http://zhitutuijian.xyz/user/updateAvatar",
         null,
         {
           params: {

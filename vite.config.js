@@ -23,11 +23,6 @@ export default defineConfig({
                 changeOrigin: true,
                 secure: false // 允许不安全的 HTTP 请求
             },
-            '/kpi': {
-                target: 'http://localhost:8090/',
-                changeOrigin: true,
-                secure: false // 允许不安全的 HTTP 请求
-            }
         }
     }
 });

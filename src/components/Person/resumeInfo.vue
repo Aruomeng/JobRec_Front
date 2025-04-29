@@ -106,7 +106,7 @@ const rules = reactive<FormRules<RuleForm>>({
   ],
 });
 // 定义一个 ref 来存储选中的文件
-const uploadUrl = "http://localhost:8090/file/upload";
+const uploadUrl = "http://zhitutuijian.xyz/file/upload";
 // 处理文件选择事件的函数
 // 移除原有的 handleFileChange，改用 http-request
 const customUpload = async (options: any) => {
@@ -121,7 +121,7 @@ const customUpload = async (options: any) => {
       },
     });
     if (response.data.code === 200) {
-      ruleForm.resume = "http://localhost:8090/resume/" + response.data.data;
+      ruleForm.resume = "http://zhitutuijian.xyz/resume/" + response.data.data;
       ElMessage.success("文件上传成功");
     } else {
       ElMessage.error("上传失败：" + response.data.msg);
@@ -157,7 +157,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       }
       // 等待 axios 请求完成（添加 await）
       const response = await axios.post(
-        "http://localhost:8090/seekcard/update",
+        "http://zhitutuijian.xyz/seekcard/update",
         ruleForm,
         {
           headers: {
@@ -191,12 +191,16 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 async function getUserInfo() {
   const userId = localStorage.getItem("id");
-  const res = await axios.post("http://localhost:8090/seekcard/getInfo", null, {
-    params: { userId: userId },
-    headers: {
-      Authorization: localStorage.getItem("token"), // 假设token存储在localStorage
-    },
-  });
+  const res = await axios.post(
+    "http://zhitutuijian.xyz/seekcard/getInfo",
+    null,
+    {
+      params: { userId: userId },
+      headers: {
+        Authorization: localStorage.getItem("token"), // 假设token存储在localStorage
+      },
+    }
+  );
   if (res.data.code === 200) {
     ruleForm.target = res.data.data.target;
     ruleForm.experience = res.data.data.experience;

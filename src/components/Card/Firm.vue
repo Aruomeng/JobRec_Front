@@ -81,7 +81,7 @@ onMounted(() => {
 const fetchData = async () => {
   isLoading.value = true;
   try {
-    const url = 'http://localhost:8090/job/page';
+    const url = 'http://zhitutuijian.xyz/job/page';
     const response = await service.post(url, null, {
       params: {
         pageNum: pageNum.value,

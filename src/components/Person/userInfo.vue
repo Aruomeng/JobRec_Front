@@ -1,13 +1,13 @@
 <template>
   <el-form ref="formRef" :model="form" :rules="rules" label-width="80px">
     <el-form-item label="用户昵称" prop="nickname">
-      <el-input v-model="form.nickname" maxlength="30"/>
+      <el-input v-model="form.nickname" maxlength="30" />
     </el-form-item>
     <el-form-item label="手机号码" prop="phone">
-      <el-input v-model="form.phone" maxlength="11"/>
+      <el-input v-model="form.phone" maxlength="11" />
     </el-form-item>
     <el-form-item label="邮箱" prop="email">
-      <el-input v-model="form.email" maxlength="50"/>
+      <el-input v-model="form.email" maxlength="50" />
     </el-form-item>
     <el-form-item label="性别">
       <el-radio-group v-model="form.gender">
@@ -21,44 +21,47 @@
       <el-button type="danger" size="mini" @click="close">关闭</el-button>
     </el-form-item>
   </el-form>
-
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue';
-import {ElMessage, ElForm} from 'element-plus';
+import { onMounted, ref } from "vue";
+import { ElMessage, ElForm } from "element-plus";
 import axios from "axios";
 import service from "@/utils/axios.js";
 
 const formRef = ref(null);
 const form = ref({
-  id: localStorage.getItem('id'),
-  nickname: '',
-  phone: '',
-  email: '',
+  id: localStorage.getItem("id"),
+  nickname: "",
+  phone: "",
+  email: "",
   gender: null,
 });
 
 const rules = {
   nickname: [
-    {required: true, message: '请输入用户昵称', trigger: 'blur'},
-    {min: 3, max: 30, message: '长度在 3 到 30 个字符', trigger: 'blur'}
+    { required: true, message: "请输入用户昵称", trigger: "blur" },
+    { min: 3, max: 30, message: "长度在 3 到 30 个字符", trigger: "blur" },
   ],
   phone: [
-    {required: true, message: '请输入手机号码', trigger: 'blur'},
-    {pattern: /^1[3456789]\d{9}$/, message: '请输入正确的手机号码', trigger: 'blur'}
+    { required: true, message: "请输入手机号码", trigger: "blur" },
+    {
+      pattern: /^1[3456789]\d{9}$/,
+      message: "请输入正确的手机号码",
+      trigger: "blur",
+    },
   ],
   email: [
-    {required: true, message: '请输入邮箱', trigger: 'blur'},
-    {type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur'}
-  ]
+    { required: true, message: "请输入邮箱", trigger: "blur" },
+    { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
+  ],
 };
 
 async function getUserInfo() {
   const userId = localStorage.getItem("id");
   const scope = localStorage.getItem("scope");
-  const res = await service.post("http://localhost:8090/user/getInfo", null, {
-    params: {userId: userId, scope: scope},
+  const res = await service.post("http://zhitutuijian.xyz/user/getInfo", null, {
+    params: { userId: userId, scope: scope },
   });
   if (res.code === 200) {
     form.value = {
@@ -71,33 +74,33 @@ async function getUserInfo() {
   } else {
     ElMessage.error(res.message);
   }
-
 }
 
 onMounted(() => {
-  getUserInfo()
-})
+  getUserInfo();
+});
 
 const submit = async () => {
   if (formRef.value) {
     await formRef.value.validate((valid) => {
       if (valid) {
-        service.post('http://localhost:8090/candidate/updateInfo', form.value)
-            .then(response => {
-              if (response.code === 200) {
-                ElMessage.success('信息更新成功');
-                // 刷新页面
-                window.location.reload();
-              } else {
-                ElMessage.error(response.message);
-              }
-            })
-            .catch(error => {
-              ElMessage.error('请求出错，请稍后重试');
-              console.error(error);
-            });
+        service
+          .post("http://zhitutuijian.xyz/candidate/updateInfo", form.value)
+          .then((response) => {
+            if (response.code === 200) {
+              ElMessage.success("信息更新成功");
+              // 刷新页面
+              window.location.reload();
+            } else {
+              ElMessage.error(response.message);
+            }
+          })
+          .catch((error) => {
+            ElMessage.error("请求出错，请稍后重试");
+            console.error(error);
+          });
       } else {
-        ElMessage.error('表单验证失败，请检查输入');
+        ElMessage.error("表单验证失败，请检查输入");
       }
     });
   }
@@ -106,11 +109,11 @@ const submit = async () => {
 const close = () => {
   // 这里可以添加关闭表单的逻辑，比如重置表单数据
   form.value = {
-    id: localStorage.getItem('id'),
-    nickname: '',
-    phone: '',
-    email: '',
-    gender: '0'
+    id: localStorage.getItem("id"),
+    nickname: "",
+    phone: "",
+    email: "",
+    gender: "0",
   };
   if (formRef.value) {
     formRef.value.resetFields();
@@ -118,7 +121,4 @@ const close = () => {
 };
 </script>
 
-
-<style scoped>
-
-</style>
+<style scoped></style>

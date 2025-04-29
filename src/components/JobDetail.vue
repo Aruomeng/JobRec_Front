@@ -44,7 +44,7 @@ const jobDetail = ref(null);
 onMounted(async () => {
   const id = route.params.id;
   try {
-    const url = `http://localhost:8090/job/detail/${id}`;
+    const url = `http://zhitutuijian.xyz/job/detail/${id}`;
     const response = await service.get(url);
     if (response.code === 200) {
       jobDetail.value = response.data;

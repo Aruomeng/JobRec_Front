@@ -79,7 +79,7 @@ const loginForm = ref({
 });
 async function handleLogin() {
   // 这里可以添加登录逻辑，例如验证用户名和密码
-  const response = await service.post('http://localhost:8090/user/login', loginForm.value);
+  const response = await service.post('http://zhitutuijian.xyz/user/login', loginForm.value);
   if (response.code === 200) {
     localStorage.setItem('id', response.data.data.id)
     localStorage.setItem('token', response.data.data.token)

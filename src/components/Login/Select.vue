@@ -13,7 +13,7 @@ async function goCandidate() {
   if (localStorage.getItem("r_username") === null || localStorage.getItem("r_password") === null || localStorage.getItem("r_email") === null) {
     await router.push('/');
   } else {
-    const res = await axios.post("http://localhost:8090/user/register", {
+    const res = await axios.post("http://zhitutuijian.xyz/user/register", {
       "username": localStorage.getItem("r_username"),
       "password": localStorage.getItem("r_password"),
       "email": localStorage.getItem("r_email"),
@@ -38,7 +38,7 @@ async function goFirm() {
   if (localStorage.getItem("f_username") === null || localStorage.getItem("f_password") === null || localStorage.getItem("f_email") === null) {
     await router.push('/');
   } else {
-    const res = await axios.post("http://localhost:8090/user/register", {
+    const res = await axios.post("http://zhitutuijian.xyz/user/register", {
       "username": localStorage.getItem("f_username"),
       "password": localStorage.getItem("f_password"),
       "email": localStorage.getItem("f_email"),
